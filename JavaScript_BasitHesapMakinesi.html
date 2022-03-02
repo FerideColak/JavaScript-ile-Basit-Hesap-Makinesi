@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
+	<script>
+		function sonuc(s){ //butonla girdi olarak alınan rakamlar ve operatorler ekrana yanyana yazılır
+			
+			if(s == ('+') || s== ('-') || s== ('*') || s== ('/')){
+				var res = s1.charAt(s1.length - 1);
+				
+				if (res == ('+') || res== ('-') || res== ('*') || res== ('/')){
+					s1 = s1.slice(0, -1);
+					document.getElementById("history").innerHTML=s1;
+				}
+			}
+			if(s1==0){
+				s1=s;
+			}else{s1+=s}
+			document.getElementById("output").innerHTML=s1;
+			document.getElementById("history").innerHTML=s1; //ekrana yazılanları aynı zamanda history'ye yazar
+		}
+		function forclear(){ //C'ye basınca sıfırlar
+			document.getElementById("output").innerHTML = "0";
+			s1 = 0;
+		}
+		function ekran(value){ //baslangıc ekranında 0 default olarak yazar
+			document.getElementById("output").innerHTML = "0";
+		}
+		function hesapla(){
+			var esittir = document.getElementById("output").innerHTML;
+			var cozum = eval(esittir);
+			document.getElementById("output").innerHTML = cozum;
+			s1 = 0;
+			history = esittir; //islem history'ye atanır
+		}  
+	</script>
+</head>
+
+<body style="background-color:white">
+	<script>
+	var s1=0;
+	var history=0;
+	</script>
+	<div class="container pt-3">
+	<div class="row">
+	 <div class="col" ></div>
+	 
+	<div class="col-4">
+	<div class="container p-3 my-3 bg-light border border-secondary border-2 rounded" >
+	
+	<div class="ekran bg-secondary">
+	<div class="sm_ekran">
+	<p class="fs-5" id="history">0</p>
+	<p class="fs-3" id="output">0</p>
+	</div></div>
+	
+	<div class="satir1">
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="7" onclick="sonuc('7')">7</button>
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="8" onclick="sonuc('8')">8</button>
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="9" onclick="sonuc('9')">9</button>
+		<button type="button" class="btn btn-secondary btn-lg w-20 p-3 " id="ArtOp" onclick="sonuc('/')" value="/">/</button>
+	</div>
+	<div class="satir2">
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="4" onclick="sonuc('4')">4</button>
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="5" onclick="sonuc('5')">5</button>
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="6" onclick="sonuc('6')">6</button>
+		<button type="button" class="btn btn-secondary btn-lg w-20 p-3" id="ArtOp" onclick="sonuc('*')" value="*">*</button>
+	</div>
+	<div class="satir3">
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="1" onclick="sonuc('1')">1</button>
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="2" onclick="sonuc('2')">2</button>
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="3" onclick="sonuc('3')">3</button>
+		<button type="button" class="btn btn-secondary btn-lg w-20 p-3" id="ArtOp" onclick="sonuc('+')" value="+">+</button>
+	</div>
+	<div class="satir4">
+		<button type="button" class="btn btn-primary btn-lg w-25 p-3" id="clear" value="C" onclick="forclear()">C</button>
+		<button type="button" class="btn btn-outline-secondary btn-lg w-25 p-3" id="sayi" value="0" onclick="sonuc('0')">0</button>
+		<button type="button" class="btn btn-secondary btn-lg w-25 p-3" id="ArtOp" value="=" onclick="hesapla()">=</button>
+		<button type="button" class="btn btn-secondary btn-lg w-20 p-3" id="ArtOp" value="-" onclick="sonuc('-')">-</button>
+	</div>
+	</div>
+	</div> <div class="col"></div></div></div>
+</body>
+</html>
